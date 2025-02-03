@@ -1,5 +1,7 @@
 # uw-math-notes
-A collection of notes from my UW-Madison math classes, written in LaTeX. The directories store all content from a specific UW-Class, jump in to see my notes and HW
+
+A collection of notes from my UW-Madison math classes, written in LaTeX, or code demonstrations in python. The
+directories store all content from a specific UW-Class, jump in to see my notes and HW
 
 ## Notes
 The notes directory of any class either holds only the summary notes I take before the midterm or occasionally regular notes from a class period.
