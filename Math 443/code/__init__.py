@@ -90,8 +90,5 @@ def generate_augmented_matrix_tf(n, dtype="float", seed=None):
     else:
         return generator.uniform((n, n + 1), dtype=tf.float32)
 
-
-
-
 if __name__ == "__main__":
     print(generate_square_matrix_torch(5, dtype="int", seed=42))

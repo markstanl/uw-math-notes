@@ -124,7 +124,7 @@ if __name__ == "__main__":
     # print(tf_A)
     # print(gaussian_elimination_tf(tf_A))
 
-    A = np.array([[1, 2, 1, 2], [2, 6, 1, 7], [1, 1, 4, 3]], dtype=float)
+    A = np.array([[2, 4, -2], [-4, -7, 4], [6, 8, -6]], dtype=float)
     U = gaussian_elimination_np(A)
     solutions = back_substitution_np(U)
 

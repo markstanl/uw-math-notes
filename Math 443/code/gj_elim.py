@@ -37,16 +37,52 @@ def gauss_jordan_elimination(A_orig: np.array) -> Optional[np.array]:
             factor = augmented_matrix[i, j] / augmented_matrix[j, j]
             augmented_matrix[i, j:] = np.subtract(augmented_matrix[i, j:], factor * augmented_matrix[j, j:])
 
-    return augmented_matrix[:, n:]
+    return augmented_matrix
+
+def rre(A_orig: np.array) -> Optional[np.array]:
+    """
+    Performs row reduction to get a matrix into reduced row echelon form.
+    Pseudocode from https://rosettacode.org/wiki/Reduced_row_echelon_form
+
+    :param A_orig: the original square matrix A
+    :return: the rre form of matrix A
+    """
+    A = A_orig.copy()
+    lead = 0
+    rowCount = len(A)
+    columnCount = len(A[0])
+
+    for r in range(rowCount):
+        if lead >= columnCount:
+            return A
+
+        i = r
+        while A[i][lead] == 0:
+            i += 1
+            if i == rowCount:
+                i = r
+                lead += 1
+                if columnCount == lead:
+                    return A
+        A[[i, r]] = A[[r, i]]
+
+        if A[r][lead] != 0:
+            A[r] = A[r] / A[r][lead]
+
+        for i in range(rowCount):
+            if i != r:
+                A[i] = A[i] - A[i][lead] * A[r]
+        lead += 1
+
+    return A
 
 
 
 if __name__ == '__main__':
-    A = np.array([[0, 2, 1], [2, 6, 1], [1, 1, 4]], dtype=float)
-    A_inverse = gauss_jordan_elimination(A)
-    print(A_inverse)
-
-    print(np.matmul(A, A_inverse))
+    A = np.array([[1, 2, -1, -4], [2, 3, -1, -11], [-2, 0, -3, 22]], dtype=float)
+    B = np.array([[2, 4, -2], [-4, -7, 4], [6, 8, -6]], dtype=float)
+    B_rre = rre(B)
+    print(B_rre)
     
     # A = np.array([[1, -2], [3, -3]])
     # B = np.array([[1, 3], [3, 1]])
