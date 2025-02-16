@@ -108,7 +108,6 @@ def inverse(A_orig: np.array) -> np.array or None:
     return augmented_matrix
 
 if __name__ == '__main__':
-    A = np.array([[1, 0, -1, 2], [2, 1, -3, 4], [0, 2, -2, 3], [1, 1, -4, -2]])
+    A = np.array([[1, 4, 7], [2, 5, 8], [3, 6, 9]], dtype=float)
     det = determinant(A)
     print(det)
-    print(is_invertible(A))

@@ -76,14 +76,29 @@ def rre(A_orig: np.array) -> Optional[np.array]:
 
     return A
 
+def rank(A: np.array) -> int:
+    """
+    Computes the rank of a matrix A. Does so by using gaussian elimination to
+    get the reduced matrix, and then counting the number of non-zero rows.
 
+    :param A: the matrix A
+    :return: the rank of A
+    """
+    A_rre = rre(A)
+    return len([row for row in A_rre if any(row)])
 
 if __name__ == '__main__':
-    A = np.array([[1, 2, -1, -4], [2, 3, -1, -11], [-2, 0, -3, 22]], dtype=float)
-    B = np.array([[2, 4, -2], [-4, -7, 4], [6, 8, -6]], dtype=float)
-    B_rre = rre(B)
-    print(B_rre)
-    
+    # A = np.array([[1, 2, -1, -4], [2, 3, -1, -11], [-2, 0, -3, 22]], dtype=float)
+    # B = np.array([[2, 4, -2], [-4, -7, 4], [6, 8, -6]], dtype=float)
+    # B_rre = rre(B)
+    # print(B_rre)
+
+    A = np.array([[2, -2, 4, 0], [1, -1, 2, 0], [3, -3, 7, 0]], dtype=float)
+    A = A.T
+    print(A)
+    A_rre = rre(A)
+    print(A_rre)
+
     # A = np.array([[1, -2], [3, -3]])
     # B = np.array([[1, 3], [3, 1]])
     # AB = np.matmul(A, B)
