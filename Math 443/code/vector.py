@@ -33,42 +33,48 @@ def verify_triangle_inequality(v, w):
     print(f"||v||={norm_v}, ||w||={norm_w}, ||v||+||w||= {norm_v+norm_w}, ||v + w|| = {norm_v_plus_w}")
     return norm_v_plus_w <= (norm_v + norm_w)
 
+def is_orthogonal(u: np.ndarray, v: np.ndarray) -> bool:
+    return np.inner(u, v) == 0
+
+def verify_orthonormal_basis(vectors: np.ndarray) -> bool:
+    """
+    Verify that a set of vectors forms an orthonormal basis.
+
+    :param vectors: the set of vectors
+    :return:
+    """
+    for i in range(len(vectors)):
+        for j in range(i+1, len(vectors)):
+            if not np.isclose(np.inner(vectors[i], vectors[j]), 0):
+                return False
+
+    for vector in vectors:
+        if not np.isclose(norm(vector), 1):
+            return False
+
+    return True
+
+def convert_to_orthonormal_basis(vectors: np.ndarray) -> np.ndarray:
+    n = len(vectors)
+    u = np.zeros_like(vectors)
+    u[0] = vectors[0]
+    for i in range(1, n):
+        u[i] = vectors[i]
+        for j in range(i):
+            u[i] -= np.inner(vectors[i], u[j]) / np.linalg.norm(u[j])**2 * u[j]
+    return np.array([vector / np.linalg.norm(vector) for vector in u])
+
 if __name__ == '__main__':
-    v = np.array([[1], [2]])
-    w = np.array([[-1], [2]])
+    v_1 = np.array([1, 2, 2], dtype=float)
+    v_2 = np.array([2, 0, 2], dtype=float)
+    v_3 = np.array([2, 2, 1], dtype=float)
+    # yes
 
-    inner_product = np.dot(v.T, w)
+    orthonormal_vectors = convert_to_orthonormal_basis(np.array([v_1, v_2, v_3]))
+    print(orthonormal_vectors)
 
-    norm_v = norm(v)
-    norm_w = norm(w)
-
-    # print(f"<v, w> = {inner_product}, ||v|| = {norm_v}, ||w|| = {norm_w}")
-    # print(f"||v|| * ||w|| = {norm_v * norm_w}")
-    # print(inner_product <= norm_v * norm_w)
+    print(verify_orthonormal_basis(orthonormal_vectors))
 
 
-    v2 = np.array([[1], [1], [1], [1]])
-    w2 = np.array([[1], [1], [1], [-1]])
-
-    inner_product = np.dot(v2.T, v2)
-
-    norm_v = norm(v2)
-    norm_w = norm(w2)
-
-    print(f"<v, w> = {inner_product}, ||v|| = {norm_v}, ||w|| = {norm_w}")
-    print(f"||v|| * ||w|| = {norm_v * norm_w}")
-    print(inner_product <= norm_v * norm_w)
-
-    cos_theta = inner_product / (norm_v * norm_w)
-    theta = np.arccos(cos_theta)
-    #
-    # print(cos_theta)
-    # print(theta)
 
 
-    v = np.array([[1], [2], [-1]])
-    w = np.array([[2], [0], [3]])
-    # verify_triangle_inequality(v, w)
-    v = np.array([[1], [2], [3]])
-    w = np.array([[1], [-1], [2]])
-    print(verify_triangle_inequality(v, w))
