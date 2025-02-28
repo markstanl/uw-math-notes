@@ -62,6 +62,7 @@ def convert_to_orthonormal_basis(vectors: np.ndarray) -> np.ndarray:
         u[i] = vectors[i]
         for j in range(i):
             u[i] -= np.inner(vectors[i], u[j]) / np.linalg.norm(u[j])**2 * u[j]
+    print(u)
     return np.array([vector / np.linalg.norm(vector) for vector in u])
 
 if __name__ == '__main__':

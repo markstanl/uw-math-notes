@@ -88,3 +88,16 @@ def convert_to_orthonormal_basis(vectors: np.ndarray) -> np.ndarray:
             u[i] -= np.inner(vectors[i], u[j]) / np.linalg.norm(u[j])**2 * u[j]
     return np.array([vector / np.linalg.norm(vector) for vector in u])
 ```
+
+## Vector Projections
+The projection of a vector $$v$$ onto a vector $$e$$ is given by:  
+$$proj_e(v) = \frac{<v, e>}{<e, e>}e$$
+The idea is that it takes the direction of $$e$$ and scales it by the magnitude of $$v$$ in that direction.
+
+## Orthogonal Matrices
+A matrix $$A$$ is orthogonal if $$A^TA=I$$, or equivalently, if $$A^T=A^{-1}$$. This
+is the same as saying that the columns of $$A$$ form an orthonormal basis.
+### Key Properties
+1. $$A^T=A^{-1}$$
+2. $$||Av|| = ||v||$$
+3. $$det(A)= \pm 1$$
