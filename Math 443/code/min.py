@@ -4,8 +4,7 @@ import numpy as np
 def solve_linear(A: np.ndarray, b: np.ndarray) -> np.ndarray:
     return np.linalg.solve(A, b)
 
-def solve_minimizing_function(A: np.ndarray, b: np.ndarray) -> np.ndarray:
-    pass
+def
 
 
 if __name__ == '__main__':
