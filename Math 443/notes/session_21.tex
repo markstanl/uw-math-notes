@@ -5,11 +5,83 @@
 \documentclass[11pt]{article}
 
 % Packages
-\usepackage{amsmath}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath, yfonts, cancel, listings, xcolor, graphicx}
+\usepackage{color}
+\usepackage{listings}
+
+\author{Mark Stanley}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{Math 443 Session 21}
 
 % Document
 \begin{document}
+    \lstset{style=mystyle}
 
+    \maketitle
+
+    \textbf{Least Squares}
+    The least squares method can find an approximate solution to an overdetermined system of linear equations.
+    An overdetermined system is one in which there are more equations than unknowns (m > n), such that the row vectors
+    are linearly dependent, or iff the rank of the coefficient matrix is equal to the rank of the augmented matrix.\\
+    The goal of least squares is to minimze the Euclidean Norm $\|Ax-b\|^2$.\\
+    \[b\in Im(A) \implies Ax=b \textrm{ has an exact solution}\]
+
+    \textbf{Theorem}
+    The least squares solution satisfies the equation $A^TAx = A^Tb$\\
+    provided that $A^TA$ is invertible, we conclude that\\
+    \[x^*=(A^TA)^{-1}A^Tb\]
+
+    \begin{proof}
+        Assume $x^*$ exists. By definition, it is the minimizer of $\|Ax-b\|^2=(Ax-b)^T(Ax-b)$.\\
+        Expanding that we yield $x^{T}A^{T}Ax-2b^T Ax+b^T b$.
+        Through calculus, we know that the first derivative of a function set to 0 yields the minimum. Thus
+        we take the derivative with respect to $x$ and set it to 0\\
+        \[\frac{d}{dx}(x^T A^T Ax = 2b^T Ax + b^T b)=2A^T Ax - 2A^T b\]
+    \end{proof}
+
+    We can look at the following code to determine the least squares solution (assuming matrix A is invertible)
+    \begin{lstlisting}[language=Python]
+    def least_squares(A, b):
+    """
+    Solve the least squares problem min ||Ax - b||_2,
+    assuming A is invertible
+    """
+    return (A.T @ b) @ np.linalg.inv(A.T @ A)
+
+def compute_least_squares_error(A, b, x):
+    """
+    Compute the least squares error ||Ax - b||_2
+    """
+    return (np.linalg.norm(A @ x - b)) ** 2
+    \end{lstlisting}
+
+    \textbf{Weighted Least Squares}
+    When some equations have more important than others, we can utilize the weighted least squares.
+    The weighted least squares solution satisifes the following:\\
+    \[A^T CAx=A^T Cb\] with solution given by \[x^*=(A^T CA)^{-1}A^T Cb\]
 
 
 \end{document}
