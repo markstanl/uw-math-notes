@@ -46,10 +46,12 @@ def verify_orthonormal_basis(vectors: np.ndarray) -> bool:
     for i in range(len(vectors)):
         for j in range(i+1, len(vectors)):
             if not np.isclose(np.inner(vectors[i], vectors[j]), 0):
+                print(f"inner product of {vectors[i]} and {vectors[j]} is {np.inner(vectors[i], vectors[j])}")
                 return False
 
     for vector in vectors:
         if not np.isclose(norm(vector), 1):
+            print(f"norm of {vector} is {norm(vector)}")
             return False
 
     return True
@@ -66,15 +68,13 @@ def convert_to_orthonormal_basis(vectors: np.ndarray) -> np.ndarray:
     return np.array([vector / np.linalg.norm(vector) for vector in u])
 
 if __name__ == '__main__':
-    v_1 = np.array([1, 2, 2], dtype=float)
-    v_2 = np.array([2, 0, 2], dtype=float)
-    v_3 = np.array([2, 2, 1], dtype=float)
+    v_1 = np.array([1/np.sqrt(3), 1/np.sqrt(3), 1/np.sqrt(3)], dtype=float)
+    v_2 = np.array([1/np.sqrt(2), -1/np.sqrt(2), 0], dtype=float)
+    v_3 = np.array([1/np.sqrt(6), 1/np.sqrt(6), -2/np.sqrt(6)], dtype=float)
     # yes
+    vectors = np.array([v_1, v_2, v_3])
 
-    orthonormal_vectors = convert_to_orthonormal_basis(np.array([v_1, v_2, v_3]))
-    print(orthonormal_vectors)
-
-    print(verify_orthonormal_basis(orthonormal_vectors))
+    print(verify_orthonormal_basis(vectors))
 
 
 

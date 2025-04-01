@@ -1,0 +1,235 @@
+%! Author = markt
+%! Date = 3/31/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath, yfonts, cancel, listings, xcolor, graphicx, article}
+\usepackage{color}
+\usepackage{listings}
+
+\author{Mark Stanley}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{Math 443 Review Session}
+
+% Document
+\begin{document}
+    \lstset{style=mystyle}
+
+    \maketitle
+
+    \section{Gaussian Elimination}
+    Create an upper triangular matrix from a given matrix.
+    \[A=\begin{pmatrix}1 & 2 \\ 4 & 5\end{pmatrix}\]
+    In Gaussian Elimination, you are allowed to add or subtract a scalar value of any row to another row.
+    So, for example here, we would subtract 4 times the first row from the second row. $R_2 \leftarrow R_2 - 4R_1$
+
+    \section{Elementary Matricies}
+    An elementary matrix corresponds to a single row operation applied to the identity matrix. Such as
+    1.
+    Adding a scalar multiple of one row to another row.
+    This is just the identity matrix with the scalar multiple in the row that is being added to the other row.
+    2.
+    Swapping two rows.
+    This is just the identity matrix with the two rows swapped.
+    3.
+    Multiplying a row by a nonzero scalar.
+    This is just the identity matrix with the row multiplied by the scalar.
+
+    \textbf{Example:}
+    For the operation we applied earlier, we can represent it as a matrix.
+    \[E = \begin{pmatrix}1 & 0 \\ -4 & 1\end{pmatrix}\]
+    Then, we can multiply this matrix by the original matrix to get the upper triangular matrix.
+
+    \section{Inverse Elementary Matricies}
+    To reverse the operation of an elementary matrix, we can just multiply by the inverse of the elementary matrix.
+    For the scalar addition of rows, the inverse is simply the negative of the scalar from the $(j, i)$ position put in
+    the $(i, j)$ position.
+
+    \textbf{LU Factorization:}
+    Given a matrix $A$, we can factor it into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$.
+    Where $LU = (L_1L_2\ldotsL_n)(E_n\ldots E_2E_1A)=A$.
+    So, simply perform Gaussian Elimination on $A$ and keep track of the elementary matrices.
+    This will give you $L$ and $U$.
+
+    \tectbf{Theorem:}
+    A matrix $A$ is regular iff $A$ can be factored into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$.
+
+    \section{Gauss-Jordan Elimination:}
+    The same principle as Gaussian Elimination, but we also eliminate the entries above the diagonal.
+    This will give us the identity matrix.
+    Used to solve systems of equations ($Ax=b$)
+
+    \section{LDV Decomposition:}
+    Given a matrix $A$, we can factor it into the product of a lower triangular matrix $L$, a diagonal matrix $D$, and an upper triangular matrix $V$.
+    Where $LDV = A$.
+    Similar to LU Decomposition.
+    Perform Gaussian Elimination on $A$ and keep track of the elementary matrices.
+    This will give you $L$ and $U$.
+    $D$ will just be the diagonal of $U$.
+    Then, divide each row of $U$ by the corresponding entry in $D$ to get $V$.
+
+    \section{Determinant:}
+    det$(A)$ is a function that returns a scalar value from a given matrix $A$.
+    If det$(A) \neq 0$, then $A$ is invertible (regular).
+    Else if det$(A) = 0$, then $A$ is singular (irregular).
+
+    \textbf{Properties of Determinants:}
+    1.
+    Adding a scalar multiple of one row to another row does not change the determinant.
+    2.
+    Swapping two rows negates the determinant.
+    3.
+    Multiplying a row by a scalar multiplies the determinant by that scalar.
+    4.
+    The determinant of an upper triangular matrix is the product of the diagonal entries.
+
+    To determine the determinant of a matrix, perform Gaussian Elimination to get the upper triangular matrix.
+    Then, multiply the diagonal entries of the upper triangular matrix.
+    If you swapped two rows, negate the determinant that many times.
+
+
+    \textbf{Vector Spaces:}
+    A vector space $V$ is a set of vectors that is closed under addition and scalar multiplication (i.e. $v,w \in V \quad v+w \in V$ and $v \in V \quad \alpha v \in V$).
+
+    \textbf{Axioms:}
+    1.
+    $v+w = w+v$
+    2.
+    $(v+w)+u = v+(w+u)$
+    3.
+    There exists a zero vector $0$ such that $v+0=v$
+    4.
+    For every $v$, there exists a vector $-v$ such that $v+(-v)=0$
+    5.
+    $\alpha(v+w) = \alpha v + \alpha w$
+    6.
+    $\alpha(\beta v)=(\alpha \beta )v$
+    7.
+    $1v = v$
+
+    \textbf{Span and Linear Independence:}
+    The span of a set of vectors is the set of all possible linear combinations of those vectors.
+    \[\textrm{Span}(v_1, \ldots, v_k)=\{c_1 v_1 + c_2 v_2 + \cdots + c_k v_k | c_i \in \mathbb{R}\}\}\]
+
+    A set of vectors in linearly independent if the only linear combination of those vectors that equals the zero vector is the trivial one.
+    In other words: \\
+    Vectors $v_1, v_2, \ldots, v_k$ are linearly independent iff the following equation
+    \[c_1 v_1 + c_2 v_2 + \cdots + c_k v_k = 0\]
+    only has the trivial solution $c_1 = c_2 = \cdots = c_k = 0$.
+
+
+    \textbf{Four Fundamental Subspaces:}
+    1.
+    The column space: The span of the columns of a matrix.
+    2.
+    The row space: The span of the rows of a matrix.
+    3.
+    The null space: The set of all solutions to $Ax=0$.
+    4.
+    The left null space: The set of all solutions to $A^Ty=0$.
+
+    \textbf{Rank Nullity Theorem:}
+    \[\textrm{rank}(A)+\textrm{nullity}(A)=n\]
+    \[\textrm{rank}(A^T)+\textrm{nullity}(A^T)=m\]
+
+    \section{Subspaces:}
+    A subspace is a subset of a vector space that is itself a vector space.
+    It must satisfy the axioms of a vector space, as well as have the same zero vector as the original vector space.
+
+    \section(Inner Product:)
+    \textbf{Definition:} An inner product of a vector space $V$ is a pairing $\langle v, w, \rangle \in mathbb{R}$ satisfying:
+    1.
+    \textbf{Bilinearity:} $\langle cu+dv, q \rangle = c\langle u, w \rangle + d \langle v , w \rangle $
+    2.
+    \textbf{Symmetry:} $\langle u, v \rangle = \langle v, u \rangle$
+    3.
+    Positivity: $\langle v, v \rangle \geq 0$ for $v \neq 0$, and $\langle 0, 0 \rangle = 0$
+
+    \textbf{Examples of Inner Products:}
+    1.
+    The dot product: $\langle u, v \rangle = u \cdot v = \sum v_i w_i$
+    2.
+    The weighted dot product: $\langle u, v \rangle = \sum c_u v_i w_i$, where $c_i > 0$
+
+    \section{Cauchy-Schwarz Inequality:}\label{sec:cauchy-schwarz}
+    \textbf{Statement:} For all vectors $v, w$ in an inner product space,
+    \[|\langle v, w \rangle| \leq ||v|| \cdot ||w||\]
+    Equality holds iff $v$ and $w$ are linearly dependent.
+
+    \section{Triangle Inequality and Minowski Inequality:}\label{sec:triangle}
+    \textbf{Triangle Inequality:} For all vectors $v, w \in V$:
+    \[||v+w|| \leq ||v|| + ||w||\]
+    \textbf{Minowski Inequality:} For all vectors $v, w \in V$ and all $p \geq 1$:
+    \[(\sum |v_i + w_i|^p)^{\frac{1}{p}} \leq (\sum |v_i|^p)^{\frac{1}{p}} + (\sum |w_i|^p)^{\frac{1}{p}}\]
+
+    \section{Orthogonal Matrix:}
+    A square matrix $Q$ is orthogonal if its rows and columns are orthogonal unit vectors.
+    Meaning: for $c_1, \ldots, c_n \in Q$, $\|c_i\|=1$ and $c_i \cdot c_j = 0$ for $i \neq j$.
+    or:\\
+    \[Q^{TQ=QQ^T=I}\]
+
+    \textbf{Key Properties of Orthogonal Matrices:}
+    1.
+    \textbf{Inverse equals transpose:} $Q^{-1}=Q^T$
+    2.
+    \textbf{Preserves length:} $||Qv||=||v||$
+    3.
+    \textbf{Determinant:} $|\det(Q)|= \pm 1$
+    4.
+    \textbf{Rotation and reflection:} Orthogonal matrices represent rotations and reflections.
+
+    \section{Positive Definite Matrices:}
+    A symmetric matrix $A$ is positive definite if for all nonzero vectors $v$, $v^TAv > 0$.
+
+    \subsection*{(a)} Suppose $A$ is a positive definite matrix.
+    Show that $A^{-1}$ is also positive definite.
+
+    \begin{proof}
+        We know that $x^T A x > 0, \, \forall x \in V$.
+        Assume $y$ is any vector, we can define the product as $x = A^{-1} y$.
+        We can now substitute this into the equation:
+        \[y^T A^{-1} y > 0\]
+        Thus, $A^{-1}$ is also positive definite.
+    \end{proof}
+
+
+
+
+
+
+    \begin{proof}
+        Some Proof
+    \end{proof}
+
+    Some code:
+    \begin{lstlisting}[language=Python]
+    def python_code():
+        pass
+    \end{lstlisting}
+
+\end{document}

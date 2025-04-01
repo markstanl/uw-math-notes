@@ -1,4 +1,4 @@
-# Review
+||# Review
 1. Dot Product: $$\langle v, w \rangle = \sum v_i w_i$$
 2. Weighted Inner Product: $$\langle v, w \rangle = \sum c_i v_i w_i$$ where $c_i$ is a constant.
 
