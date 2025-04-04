@@ -1,0 +1,110 @@
+%! Author = markt
+%! Date = 3/10/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath, yfonts, cancel, listings, xcolor, graphicx}
+\usepackage{color}
+\usepackage{listings}
+
+\author{Mark Stanley}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{Math 443 Session 25}
+
+% Document
+\begin{document}
+    \lstset{style=mystyle}
+
+    \maketitle
+
+    \subsection{Elementary First Order Scalar ODE}
+    All first order scalar ODEs can be written in the form, where the actual ODE is the original equation $u(t)$.
+
+    \subsection{Equation}
+    \[\frac{du}{dt}=au\]\\
+    Where $a \in \mathbb{R}$, and $u(t)$ is an unknown scalar function.
+
+    \subsection{Solution}
+    The general solution to this equation is
+    \[u(t)=ce^{at}\]\\
+    Where $c$ is the integration constant, and the equation is derived using separation of variables.
+    The unique solution is given by the initial condition $u(0)=u_0$.
+    \[u(t)=be^{a(t-t_0)}\]
+
+    \subsection{First Order Dynamic System}
+    A first-order dynamical system consists of a system of $n$ couple first-order ODEs
+    \[\frac{du_1}{dt}=f_1(t, u_1, \ldots, u_n), \ldots, \frac{du_n}{dt}=f_n(t, u_1, \ldots, u_n)\]
+    The system can be written in vector form as
+    \[\frac{du}{dt}=f(t, u)\]
+    Where $u$ is a vector of the form $u=(u_1, \ldots, u_n)^T$ and $f$ is a vector function of the form $f=(f_1, \ldots, f_n)^T$.
+
+    \subsection{Eigenvalues and Eigenvectors}
+    \textbf{Definition:} Let $A$ be an $n \times n$ matrix.
+    A scalar $\lambda$ is called an eigenvalue of $A$ if there exists a nonzero vector $v \neq 0$, called an eigenvectpr, such that:
+    \[Av = \lambda v\]
+    This equation can be rewritten as:
+    \[(A-\lambda I)v=0\]
+    Where $I$ is the identity matrix.
+    A nontrivial solution exists iff $A-\lambda I$ is singular, i.e. $\det(A-\lambda I)=0$.
+
+    \subsection{Computational Approach}
+    To compute eigenvalues and eigenvectors manually, we can use the following steps:
+    \begin{enumerate}
+        \item Solve the following $\det(A-\lambda I)=0$ for each eigenvalue.
+        \item For each eigenvalue, compute the eigenvector by solving $(A-\lambda I)v=0$.
+    \end{enumerate}
+
+    \subsection{Eigenspaces and Eigenvalues}
+    \textbf{Definition:} Given a real eigenvalue $\lambda \in \mathbb{R}$, the corresponding eigenspace $V_\lambda \subset \mathbb{R}^n$ is the subspace spanned by all eigenvectors associated with $\lambda$.
+    Equivalently:
+    \[V_\lambda=\{v \in \mathbb{R}^n: Av=\lambda v\}=\ker(A-\lmabda I)\]
+
+    \subsection{Properties:}
+    \begin{enumerate}
+        \item $\lambda$ is an eigenvalue $\iff \ker(A-\lambda I)\neq {0}$
+        \item Every nonzero element of $V_\lambda$ is an eigenvector associated with $\lambda$.
+        \item A basis of the eigenspace $V_\lambda$ is the most economical way to represent it.
+    \end{enumerate}
+
+    \subsection{Eigenvalue Problems: Key Properties}
+    Let $A\in \mathbb{R}^{n\times n}$, and consider the eigenvalue problem:
+    \[Av=\lambda v, \quad v \neq 0\]
+    \mathbb{Main Properties:}
+    \begin{enumerate}
+        \item Eigenvalues $\lambda$ can be real or complex, even if $A$ is real
+        \item The set of all eigenvectors corresponding to a given eigenvalue $\lambda$ (along with 0) forms a subspace called the eigenspace.
+        \item A matrix $A$ is singular iff $\lambda = 0$ is an eigenvalue.
+        \item For real matrices, complex eigenvalues come in conjugate pairs.
+        \item The eigenvalues of a matrix are the roots of its characteristic polynomial: \[\det(A-\lambda I)=0\]
+        \item If $A$ is symmetric ($A=A^T$), then:
+        \begin{enumerate}
+            \item All eigenvalues are real
+            \item Eigenvectors corresponding to distinct eigenvalues are orthogonal
+        \end{enumerate}
+    \end{enumerate}
+\end{document}

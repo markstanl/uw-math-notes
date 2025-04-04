@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.11)  31 MAR 2025 12:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.11)  2 APR 2025 11:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -233,8 +233,7 @@ tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count281
 \l__pdf_internal_box=\box55
-)
-No file session_24.aux.
+) (C:/Users\markt\PycharmProjects\uw-math-notes\auxil\session_24.aux)
 \openout1 = `session_24.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
@@ -302,6 +301,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
 (C:\Users\markt\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+[2]
 session_24.tex:75: Undefined control sequence.
 l.75     Where $LU = (L_1L_2\ldotsL
                                    _n)(E_n\ldots E_2E_1A)=A$.
@@ -325,22 +325,37 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2] [3]
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
+
+ []
+
+
+Overfull \hbox (0.29308pt too wide) in paragraph at lines 196--205
+[]\OT1/cmr/bx/n/10.95 Key Prop-er-ties of Or-thog-o-nal Ma-tri-ces: \OT1/cmr/m/
+n/10.95 1. \OT1/cmr/bx/n/10.95 In-verse equals trans-
+ []
+
+[5]
 (C:\Users\markt\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-[4] (C:/Users\markt\PycharmProjects\uw-math-notes\auxil\session_24.aux)
+[6] (C:/Users\markt\PycharmProjects\uw-math-notes\auxil\session_24.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 5132 strings out of 474486
- 73609 string characters out of 5743755
- 1939542 words of memory out of 5000000
- 27372 multiletter control sequences out of 15000+600000
- 566878 words of font info for 72 fonts, out of 8000000 for 9000
+ 5138 strings out of 474486
+ 73815 string characters out of 5743755
+ 1938542 words of memory out of 5000000
+ 27376 multiletter control sequences out of 15000+600000
+ 567185 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,7n,65p,426b,1298s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -348,21 +363,23 @@ cmbx10.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmex10.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/markt/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/markt/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/markt/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/markt/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users
-/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C
-:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmti10.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmtt9.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
+KTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/markt/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/markt/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/markt/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
+/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+6.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr8.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb><C:/Users/markt/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/markt/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/markt/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:/Users\markt\PycharmProjects\uw-math-notes\out\session_24.p
-df (4 pages, 166597 bytes).
+df (6 pages, 202844 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
