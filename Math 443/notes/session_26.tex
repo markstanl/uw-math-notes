@@ -1,0 +1,75 @@
+%! Author = markt
+%! Date = 3/10/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath, yfonts, cancel, listings, xcolor, graphicx}
+\usepackage{color}
+\usepackage{listings}
+
+\author{Mark Stanley}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\title{Math 443 Session 26}
+
+% Document
+\begin{document}
+    \lstset{style=mystyle}
+
+    \maketitle
+
+    \subsection{Characteristic Polynomial}
+    Given some matrix $A$, the characteristic polynomial is defined as the solution to
+    \[\det(A-\lambda I)=0\]
+    Where $\lambda$ is the eigenvalue of the matrix $A$, and $I$ is the identity matrix.
+    The solution to this is a polynomial.
+
+    \subsection{Leading Coefficients}
+    From expansion, we have:
+    \[p_A(\lambda) = \det(A-\lambda I)=c_n \lambda^n + c_{n-1}\lambda^{n-1}+\cdots+c_1\lambda + c_0\]
+    We can identify $c_0$ is a constant, $c_n=(-1)^n$, $c_{n-1}=(-1)^{n-1} tr(A)$, where
+    \[tr(A)=a_{11}+a_{22} + \cdots + a_{nn}\]
+
+    \subsection{Example}
+    Given some $2 \times 2$ matrix $A=\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, we can find the characteristic polynomial as follows:
+    \[p_A(\lambda)=\lambda^2 - (tr(A))\lambda + \det(A)\]
+
+    \theorem{Fundamnetal Theorem of Algebra}
+    The fundamental theorem of algebra allows us to factor the characteristic polynomial into linear factors.
+    \[p_A(\lambda)=(-1)^n(\lambda-\lambda_1)(\lambda-\lambda_2)\ldots(\lambda-\lambda_n)\]
+    Where $\lambda_i$ are the eigenvalues of the matrix $A$.
+
+    \theorem{8.11}
+    An $n \times n$ matrix possesses at least one and at most $n$ distinct complex eigenvalues
+
+    Some code:
+    \begin{lstlisting}[language=Python]
+    def python_code():
+        pass
+    \end{lstlisting}
+
+\end{document}
